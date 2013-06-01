@@ -3,7 +3,7 @@ beat-em-up
 
 Multiplayer Beat-Em-Up game with lobby, matches, punches and a chicken!
 
-Made during a 24 hour hackathon at #GameHackDays - Feb 2013, with [Maciej Baron](https://github.com/MaciekBaron)
+Made during a 24 hour hackathon at #GameHackDays - Feb 2013, with [Maciej Baron](https://github.com/MaciekBaron)  
 Then modified during 24 hour hackathon at FirefoxOS in Google Campus London - Jun 2013
 
 **[Demo](http://moka.co:88/)** - Requires **4** players, ask your friends to join!
