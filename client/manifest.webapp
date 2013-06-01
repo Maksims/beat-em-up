@@ -1,0 +1,22 @@
+{
+  "version": "0.1",
+  "name": "moka.beat-em-up",
+  "description": "test",
+  "launch_path": "/",
+  "developer": {
+    "name": "Maksims Mihejevs",
+    "url": "http://moka.co:88/"
+  },
+  "installs_allowed_from": ["*"],
+  "orientation": "landscape-primary",
+  "activities": {
+    "moka.beat": {
+      "href": "/index.html",
+      "disposition": "window",
+      "returnValue": false
+    }
+  },
+  "permissions": {
+    "desktop-notification": {}
+  }
+}

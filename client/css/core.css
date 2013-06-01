@@ -3,17 +3,20 @@ body {
   background: #323232;
   color: #eee;
   font-family: 'Courier New';
-  max-width: 1088px;
-  width: 1088px;
   overflow: hidden;
 }
 
 @font-face {
   font-family:"pixel";
-  src:url("/font/pixelart.eot?") format("eot"),
+  /*src:url("/font/pixelart.eot?") format("eot"),
       url("/font/pixelart.woff") format("woff"),
       url("/font/pixelart.ttf") format("truetype"),
-      url("/font/pixelart.svg#Pixel-Art") format("svg");
+      url("/font/pixelart.svg#Pixel-Art") format("svg");*/
+  src: url('/font/5x5_rounded.eot');
+  src: url('/font/5x5_rounded.eot') format('embedded-opentype'),
+       url('/font/5x5_rounded.woff') format('woff'),
+       url('/font/5x5_rounded.ttf') format('truetype'),
+       url('/font/5x5_rounded.svg#5x5roundedRegular') format('svg');
   font-weight:normal;
   font-style:normal;
 }
@@ -22,220 +25,105 @@ a {
   color: #29f;
 }
 
-#header {
-  width: 1088px;
-  height: 32px;
-  line-height: 32px;
-  font-size: 24px;
-  text-align: center;
-  font-family: "pixel";
+#fosInstall {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #323232;
+  color: #000;
 }
 
-#header > span {
-  font-size: 14px;
-  font-family: 'Courier New';
+#fosInstall > .install {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  width: auto;
+  text-align: center;
+  top: 50%;
+  margin-top: -16px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+  padding: 4px 8px;
+  background: #f60;
+  color: #fff;
+}
+
+#fosInstall > .status {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  width: auto;
+  text-align: center;
+  top: 50%;
+  margin-top: 16px;
+  height: 32px;
+  line-height: 32px;
+  padding: 4px 8px;
+  color: #999;
+}
+
+#refresh {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  background: url('/images/reload.png') no-repeat;
+}
+
+#menu {
+  display: none;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  background: url('/images/menu.png') no-repeat;
 }
 
 #lobby {
-  width: 1088px;
-  height: 384px;
+  position: absolute;
+  width: 320px;
+  top: 50%;
+  left: 50%;
+  margin: -26px 0 0 -150px;
   font-size: 24px;
   text-align: center;
   font-family: "pixel";
 }
 #lobby > h1 {
-  margin-top: 128px;
-  font-size: 24px;
-  margin: 128px 0 0;
+  margin-top: 0;
+  font-size: 20px;
   font-weight: normal;
 }
 
-#gameplay {
-  display: none;
+#ruler {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  visibility: hidden;
 }
 
 #game {
-  position: absolute;
-  width: 832px;
-  height: 384px;
-  top: 32px;
-  left: 128px;
-  background: url('/images/background.png');
-}
-
-.team {
-  width: 126px;
-  position: absolute;
-  top: 32px;
-  border: 1px solid #222;
-  border-bottom: none;
-  font-family: "pixel";
-}
-.team[data-name="red"] {
-  left: 960px;
-  color: #ff0;
-}
-.team[data-name="green"] {
-  left: 0;
-  color: #29d;
-}
-.team > .score {
-  height: 32px;
-  line-height: 32px;
-  font-size: 24px;
-  text-align: center;
-  background: #222;
-}
-.team > .users > .user {
-  padding: 2px;
-  font-size: 12px;
-  border-bottom: 1px solid #222;
-}
-.team > .users > .user > .score {
-  float: right;
-}
-
-#info {
-  position: absolute;
-  left: 0;
-  top: 416px;
-  width: 1024px;
-  font-size: 12px;
-  padding: 0 16px 16px;
-}
-
-#info > .changeName {
-  float: left;
-}
-
-#info > .changeName > input {
-  background: #222;
-  color: #fff;
-  outline: none;
-  border: none;
-  padding: 2px 4px;
-}
-#info > .changeName > .changeNameButton {
-  display: inline-block;
-  color: #29f;
-  border: 1px solid #222;
-  cursor: pointer;
-  padding: 2px 4px;
-}
-#info > .changeName > .changeNameButton:hover {
-  text-decoration: underline;
-}
-
-#info .authors {
-  margin-top: 48px;
-}
-
-#info h1 {
-  margin: 16px 0 0;
-  font-size: 24px;
-}
-#info ul {
-  margin: 0;
-  padding: 0 0 0 24px;
-}
-#info p {
-  margin: 0;
-}
-
-.windows8 {
   display: none;
-}
-
-.touch {
-  display: none;
-  width: 1056px;
-  height: 144px;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 16px;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.touch > .hit > .button {
-  float: right;
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  background: #000;
-  font-family: 'pixel';
-  font-size: 32px;
-  margin-top: 48px;
-  margin-right: 8px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-
-.touch > .arrow > .button {
-  position: absolute;
-  left: 0;
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  background: #000;
-  font-family: 'pixel';
-  font-size: 32px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.touch > .arrow > .button[data-button="up"] {
-  top: 0;
-  left: 48px;
-}
-.touch > .arrow > .button[data-button="right"] {
-  top: 48px;
-  left: 96px;
-}
-.touch > .arrow > .button[data-button="down"] {
-  top: 96px;
-  left: 48px;
-}
-.touch > .arrow > .button[data-button="left"] {
-  top: 48px;
-  left: 0;
-}
-
-.show {
-  color: #29f;
-  cursor: pointer;
-  margin-top: 40px;
-}
-.hidden {
-  display: none;
-}
-
-.controls {
   position: absolute;
   top: 0;
   right: 0;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-#controls {
-  position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  font-size: 12px;
+  width: auto;
+  height: auto;
+  max-width: 832px;
+  max-height: 384px;
+  background: url('/images/background.png');
 }

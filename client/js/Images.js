@@ -1,24 +1,81 @@
-;(function (BeatEmUp) {
+var animSpeed = 100;
+var frameLast = 0;
+var frame = 0;
 
-	var url ="images/";
-	var ext = ".png";
+var images = {
+  'player': {
+    skin: {
+      'green': loadImage('player-green.png'),
+      'red': loadImage('player-red.png')
+    },
+    frames: {
+      'stand': [
+        [ 0, 0, 58, 62 ]
+      ],
+      'stand.grab': [
+        [ 0, 128, 58, 96 ]
+      ],
+      'walk': [
+        [ 58, 0, 58, 62 ],
+        [ 116, 0, 58, 62 ],
+        [ 0, 0, 58, 62 ]
+      ],
+      'walk.grab': [
+        [ 58, 128, 58, 96 ],
+        [ 116, 128, 58, 96 ],
+        [ 0, 128, 58, 96 ]
+      ],
+      'punch': [
+        [ 0, 64, 58, 62 ],
+        [ 58, 64, 58, 62 ],
+        [ 116, 64, 58, 62 ]
+      ],
+      'corpse': [
+        [ 0, 226, 68, 32 ]
+      ]
+    }
+  },
+  'chicken': {
+    img: loadImage('chicken.png'),
+    frames: {
+      'stand': [
+        [ 0, 0, 42, 32 ]
+      ],
+      'walk': [
+        [ 42, 0, 42, 32 ],
+        [ 84, 0, 42, 32 ],
+        [ 0, 0, 42, 32 ]
+      ]
+    }
+  },
+  'punch': loadImage('punch.png')
+}
 
-	var load_img = function (filename) {
-		var img = new Image();
-		img.src = url + filename + ext;
-		return img;
-	}
+function loadImage(fileName) {
+  var image = new Image();
+  image.src = '/images/' + fileName;
+  return image;
+}
 
-	BeatEmUp.Images = {
-		dudeWalk: load_img("dude-walk"),
-		dude2Walk: load_img("dude2-walk"),
-		dudePunch: load_img("dude-punch"),
-		dude2Punch: load_img("dude2-punch"),
-		dudeCorpse: load_img("dude-corpse"),
-		dude2Corpse: load_img("dude2-corpse"),
-		chicken: load_img("chicken"),
-		dudeHold: load_img("dude-hold"),
-		dude2Hold: load_img("dude2-hold")
-	}
+function drawImage(image, skin, anim, x, y, halign, valign, lframe) {
+  if (lframe == undefined) {
+    lframe = frame;
+  }
+  if (skin) {
+    var img = images[image].skin[skin];
+  } else {
+    var img = images[image].img;
+  }
 
-})(window.BeatEmUp = window.BeatEmUp || {});
+  var s = images[image].frames[anim][ lframe % images[image].frames[anim].length ];
+
+  var o = [ 0, 0 ];
+  if (halign) {
+    o[0] = -s[2] * halign;
+  }
+  if (valign) {
+    o[1] = -s[3] * valign;
+  }
+
+  ctx.drawImage(img, s[0], s[1], s[2], s[3], x + o[0], y + o[1], s[2], s[3]);
+}

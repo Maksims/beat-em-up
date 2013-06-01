@@ -23,6 +23,9 @@ function Input() {
     67: 'uppercut' // c
   }
 
+  this.touch = 'ontouchstart' in document.documentElement;
+  this.touches = { };
+
   var self = this;
 
   window.onkeydown = function(evt) {
@@ -47,7 +50,7 @@ function Input() {
   // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // major rework
   // touch input
-  var buttons = document.querySelectorAll('[data-button]');
+  /*var buttons = document.querySelectorAll('[data-button]');
   var i = buttons.length;
   while(i--) {
     buttons[i].addEventListener('mousedown', function() {
@@ -66,10 +69,47 @@ function Input() {
       }
       return false;
     });
-  };
+  };*/
 }
 events.implement(Input);
 
+
+Input.prototype.touchInit = function(element) {
+  if (this.touch) {
+    var self = this;
+    element.addEventListener('touchstart', function(evt) {
+      var rect = element.getBoundingClientRect();
+      var i = evt.touches.length;
+      while(i--) {
+        self.touches[evt.touches[i].identifier] = {
+          x: evt.touches[i].clientX - rect.left,
+          y: evt.touches[i].clientY - rect.top
+        };
+      }
+      evt.preventDefault();
+    }, false);
+
+    element.addEventListener('touchend', function(evt) {
+      var i = evt.changedTouches.length;
+      while(i--) {
+        delete self.touches[evt.changedTouches[i].identifier];
+      }
+      evt.preventDefault();
+    }, false);
+
+    canvas.addEventListener('touchmove', function(evt) {
+      var rect = canvas.getBoundingClientRect();
+      var i = evt.touches.length;
+      while(i--) {
+        if (self.touches[evt.touches[i].identifier] != undefined) {
+          self.touches[evt.touches[i].identifier].x = evt.touches[i].clientX - rect.left;
+          self.touches[evt.touches[i].identifier].y = evt.touches[i].clientY - rect.top;
+        }
+      }
+      evt.preventDefault();
+    }, false);
+  }
+}
 
 Input.prototype.horiz = function() {
   return this.v.right - this.v.left;

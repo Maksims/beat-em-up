@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>gamehack - Beat-Em-Up!</title>
 
-  <meta name="viewport" content="width=1088, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
   <link href="/css/core.css" rel="stylesheet" type="text/css">
 
@@ -18,82 +18,21 @@
   </script>
 </head>
 <body>
-  <div id='controls'>Arrows - move; Z - punch;</div>
-  <div id='header'>Beat-Em-Up<span> - GameHackDays [10.02.13]</span></div>
+  <div id='ruler'></div>
   <div id='lobby'>
     <h1>Waiting for players...</h1>
-    <div class='users'></div>
+    <div id='lobbyUsers'></div>
   </div>
-  <div id='gameplay'>
-  	<canvas id="game" width="832" height="384"></canvas>
-
-    <div class='team' data-name='red'>
-      <div class='score'>0</div>
-      <div class='users'></div>
-    </div>
-    <div class='team' data-name='green'>
-      <div class='score'>0</div>
-      <div class='users'></div>
-    </div>
-    <div id='info'>
-      <div class='touch hit'>
-        <div class='hit'>
-          <div class='button' data-button='c'>C</div>
-          <div class='button' data-button='x'>X</div>
-          <div class='button' data-button='z'>Z</div>
-        </div>
-        <div class='arrow'>
-          <div class='button' data-button='up'>u</div>
-          <div class='button' data-button='right'>r</div>
-          <div class='button' data-button='down'>d</div>
-          <div class='button' data-button='left'>l</div>
-        </div>
-      </div>
-      <div class='changeName'>
-        <div>change name</div>
-        <input type="text" id="newName"></input><div class='changeNameButton'>change</div>
-      </div>
-      <div class='show'>show info</div>
-      <div class='hidden'>
-        <div class='authors'>
-          <h1>authors</h1>
-          <ul>
-            <li>Maksims Mihejevs [coding] (<a href='mailto:core@moka.co'>email</a>)</li>
-            <li>Maciej Baron [coding]</li>
-            <li>Doug Pennant [audio] (<a href='mailto:douglas.pennant@gmail.com'>email</a>)</li>
-          </ul>
-        </div>
-        <div class='technologies'>
-          <h1>technology</h1>
-          <ul>
-            <li>back-end: node.js, socket.io, express.js</li>
-            <li>front-end: html5-canvas, backbone.js, socket.io</li>
-          </ul>
-        </div>
-        <div>
-          <h1><a href='https://github.com/dude-seriously/beat-em-up' target='_blank'>GitHub</a> (sources)</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="controls">
-    <a onclick="BGmusic.pause();">♫♪ Stop the music</a>
-  </div>
+  <canvas id="game"></canvas>
+  <div id='menu'></div>
+  <div id='refresh'></div>
   <script src="/js/load.js"></script>
-  <script>
-    BGmusic = new Audio('music/FightMusic.mp3');
-    BGmusic.addEventListener('ended', function() {
-      this.currentTime = 0;
-      this.play();
-    }, false);
-    BGmusic.play();
-  </script>
   <script type="text/javascript">
-    (function() {
+    /*(function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    })();*/
   </script>
 </body>
 </html>

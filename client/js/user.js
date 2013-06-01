@@ -34,17 +34,17 @@ User.prototype.remove = function() {
 // events / view
 
 events.on('user:create', function(user) {
-  $('.team[data-name="' + user.team.name + '"] > .users').append('<div class="user" data-id="' + user.id + '"><span class="name">' + user.name + '</span><span class="score">0</span></div>');
+  //$('.team[data-name="' + user.team.name + '"] > .users').append('<div class="user" data-id="' + user.id + '"><span class="name">' + user.name + '</span><span class="score">0</span></div>');
 
   user.on('change:score', function() {
-    $('.user[data-id="' + this.id + '"] > .score').html(this.score);
+    //$('.user[data-id="' + this.id + '"] > .score').html(this.score);
   });
 
   user.on('change:name', function() {
-    $('.user[data-id="' + this.id + '"] > .name').html(this.name);
+    //$('.user[data-id="' + this.id + '"] > .name').html(this.name);
   });
 
   user.on('remove', function() {
-    $('.user[data-id="' + this.id + '"]').remove();
+    //$('.user[data-id="' + this.id + '"]').remove();
   });
 });

@@ -1,47 +1,24 @@
 var scripts = [
   {
-    name: 'jquery',
-    file: '/js/jquery.js'
-  }, {
     name: 'input',
     file: '/js/input.js',
     requires: [
       'events'
     ]
   }, {
-    name: 'underscore',
-    file: '/js/lib/underscore-min.js'
-  }, {
-    name: 'backbone',
-    file: '/js/lib/backbone-min.js',
-    requires: [
-      'jquery',
-      'underscore'
-    ]
-  }, {
     name: 'sockets',
     file: '/socket.io/socket.io.js'
   }, {
-    name: 'Images',
-    file: '/js/Images.js'
+    name: 'images',
+    file: '/js/images.js'
   }, {
-    name: 'Debug',
-    file: '/js/Debug.js',
+    name: 'camera',
+    file: '/js/camera.js'
+  }, {
+    name: 'player',
+    file: '/js/player.js',
     requires: [
-      'jquery'
-    ]
-  }, {
-    name: 'Sprite',
-    file: '/js/Sprite.js',
-    require: [
-      'Debug'
-    ]
-  }, {
-    name: 'Player',
-    file: '/js/Player.js',
-    requires: [
-      'backbone',
-      'Debug'
+      'camera'
     ]
   }, {
     name: 'events',
@@ -50,14 +27,12 @@ var scripts = [
     name: 'team',
     file: '/js/team.js',
     requires: [
-      'jquery',
       'events'
     ]
   }, {
     name: 'user',
     file: '/js/user.js',
     requires: [
-      'jquery',
       'events'
     ]
   }, {
@@ -70,14 +45,12 @@ var scripts = [
     name: 'global',
     file: '/js/global.js',
     requires: [
-      'jquery',
       'input',
       'events',
       'sockets',
-      'Debug',
-      'Sprite',
-      'Player',
-      'Images',
+      'camera',
+      'player',
+      'images',
       'team',
       'user',
       'body',

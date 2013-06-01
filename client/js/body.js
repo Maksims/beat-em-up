@@ -5,7 +5,7 @@ function Body(data) {
   this.x      = data.x;
   this.y      = data.y;
   this.f      = data.f;
-  this.sprite = data.sprite;
+  this.skin   = data.skin;
 
   this.created = now;
   bodies.push(this);
@@ -15,7 +15,7 @@ Body.prototype.render = function() {
   if (now - this.created < bodyLife) {
     var draw = true;
     var fading = 0;
-    if (now - this.created > (bodyLife - 1000)) { // start blinking on last second
+    if (now - this.created > (bodyLife - 1000)) {
       fading = Math.floor((now - this.created - (bodyLife - 1000)) / 100);
       draw = (fading % 2) == 1;
     }
@@ -25,11 +25,23 @@ Body.prototype.render = function() {
       if (this.f == -1) {
         ctx.scale(-1, 1);
       }
+
+      var image = images['player'].skin[this.skin];
+      var frame = images['player'].frames['corpse'][0];
+
       if (fading) {
         fading = Math.floor(fading * 3.2);
-        ctx.drawImage(this.sprite, 0, 0, 64, 32 - fading, -48, -32 + fading, 64, 32 - fading); // shift under ground
+        ctx.drawImage(
+          image,
+          frame[0], frame[1], frame[2], frame[3] - fading,
+          -frame[2] / 2, -frame[3] + fading, frame[2], frame[3] - fading
+        )
       } else {
-        ctx.drawImage(this.sprite, -48, -32);
+        ctx.drawImage(
+          image,
+          frame[0], frame[1], frame[2], frame[3],
+          -frame[2] / 2, -frame[3], frame[2], frame[3]
+        )
       }
       ctx.restore();
     }

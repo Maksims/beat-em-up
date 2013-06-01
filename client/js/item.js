@@ -4,8 +4,6 @@ function Item(x, y) {
   this.x = x;
   this.y = y;
   this.player = 0;
-  this.sprite = new BeatEmUp.Sprite(BeatEmUp.Images.chicken, 0, 0, 42, 32, 0, 200, 3, 0, 0);
-  this.sprite.StartAnimation();
 }
 
 Item.prototype.renderBottom = function() {
@@ -26,7 +24,13 @@ Item.prototype.renderBottom = function() {
 
 Item.prototype.render = function() {
   if (this.player == 0) {
-    this.sprite.SetLocation(this.x, this.y);
-    this.sprite.Draw(ctx);
+    ctx.save();
+
+    ctx.beginPath();
+    ctx.translate(Math.floor(this.x / 4) * 4, Math.floor(this.y / 2) * 2);
+
+    drawImage('chicken', null, 'walk', 0, 0, .5, 1);
+
+    ctx.restore();
   }
 }

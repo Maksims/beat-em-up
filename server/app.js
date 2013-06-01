@@ -16,5 +16,18 @@ require('./modules/player').init(io);
 
 // start
 
-server.listen(8080);
+server.listen(88);
 console.log('running');
+
+var counter = 0;
+var message = 'hello world';
+
+app.get('/counter', function(req, res, next) {
+  if (req.query.message != undefined) {
+    message = req.query.message;
+  }
+  res.json({
+    counter: ++counter,
+    message: message
+  });
+});

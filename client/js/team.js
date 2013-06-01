@@ -35,6 +35,6 @@ Team.prototype.remove = function() {
 
 events.on('team:create', function(team) {
   team.on('change:score', function() {
-    $('.team[data-name="' + this.name + '"] > .score').html(this.score);
+    //$('.team[data-name="' + this.name + '"] > .score').html(this.score);
   })
 });
