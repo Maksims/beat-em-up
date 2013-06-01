@@ -58,7 +58,6 @@ if (navigator.mozApps && navigator.userAgent.toLowerCase().indexOf('mobile') != 
 }
 
 var ctx, canvas, socket;
-
 var notifies = [ ];
 
 var initialized = false;
@@ -84,6 +83,11 @@ function initialize() {
 
     canvas = document.getElementById("game");
     ctx = canvas.getContext("2d");
+
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+
     ctx.font = '14px "pixel"';
 
     ctx.mozImageSmoothingEnabled = false;
@@ -229,7 +233,7 @@ function initialize() {
         }
 
         renderables.sort(function(a, b) {
-          return a.y - b.y;
+          return b.y - a.y;
         });
 
         var i = renderables.length;

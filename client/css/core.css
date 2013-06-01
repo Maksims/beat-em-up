@@ -126,4 +126,9 @@ a {
   max-width: 832px;
   max-height: 384px;
   background: url('/images/background.png');
+
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
 }
