@@ -6,7 +6,7 @@ Multiplayer Beat-Em-Up game with lobby, matches, punches and a chicken!
 Made during a 24 hour hackathon at #GameHackDays - Feb 2013  
 And then modified to be compatible with mobile devices on FirefoxOS hacknight
 
-**[Demo](http://moka.co:8080/)** - Requires **4** players, ask your friends to join!
+**[Demo](http://moka.co:443/)** - Requires **4** players, ask your friends to join!
 
 Installation
 ==========
